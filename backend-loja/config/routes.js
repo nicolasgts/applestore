@@ -5,21 +5,46 @@ const appleStore = require('../api/appleStore')
 
 
 module.exports = function(server){
-  // const router = express.Router()
-  // server.use('/api', router)
+
+  var router = express.Router()
+ 
+
+    router.route('/user')
+    .get( urlencodeParser, function(req, res){
+      
+            appleStore.User.find(function(err, users){
+              if(err)
+                res.send(err)
+      
+              res.json(users);
+            });
+      
+        })
+        .post(function(req, res) {
+ 
+          var user = new appleStore.User();		// create a new instance of the Bear model
+          user.name = req.body.name;  // set the bears name (comes from the request)
+          user.lastName = req.body.lastName;
+          user.email = req.body.email;
+          user.phoneNumber = req.body.phoneNumber;
+          user.date = req.body.date;
+          user.purchases = req.body.purchases;
+
+          user.save(function(err) {
+            if (err)
+              res.send(err);
+      
+            res.json({ message: 'User created!' });
+          });
+      
+          
+        })
 
 
-  //appleStoreService.register(router,'/appleStore')
 
-    server.get('/allUser', urlencodeParser, function(req, res){
+    
 
-      appleStore.User.find(function(err, users){
-        if(err)
-          res.send(err)
 
-        res.json(users);
-      });
-
-    });
+    server.use('/api', router)
 
 }
