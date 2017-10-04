@@ -34,4 +34,4 @@ var Purchase = mongoose.model('Purchase', purchaseSchema);
 var Product = mongoose.model('Products', productSchema);
 var User = mongoose.model('User', userSchema);
 
-module.exports = { User,Product, Purchase} 
+module.exports = { User,Product, Product} 

@@ -54,7 +54,7 @@ var router = express.Router()
        if (err)
          res.send(err);
 
-       res.json({ message: 'User updated' });
+       res.json({ message: 'Product updated' });
      });
    })
 
