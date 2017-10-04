@@ -7,13 +7,13 @@ const productSchema = new mongoose.Schema({
   description: {type: String, required: true},
   quantityAvailable: {type: Number, min: 0, required: true},
   price: {type: Number, min: 0, required: true},
-  dateOfInsertion: {type: Date, required: true}
+  dateOfInsertion: { type: Date, default: Date.now}
 })
 
 const purchaseSchema = new mongoose.Schema({
-  user: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+  user: { type: Schema.Types.ObjectId, ref: 'User' },
   totalValue: {type: Number,min: 0, required: true},
-  transactionDate: { type: Date, required: true},
+  transactionDate: { type: Date, default: Date.now},
   approved: {type: Boolean, default: false},
   products: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 
@@ -34,4 +34,4 @@ var Purchase = mongoose.model('Purchase', purchaseSchema);
 var Product = mongoose.model('Products', productSchema);
 var User = mongoose.model('User', userSchema);
 
-module.exports = { User,Product, Purchase}
+module.exports = { User,Product, Purchase} 
