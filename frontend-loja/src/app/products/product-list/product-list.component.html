@@ -1,0 +1,25 @@
+<!--<div class="row">-->
+  <!--<div class="col-xs-12">-->
+    <!--<button class="btn btn-success">New Product</button>-->
+  <!--</div>-->
+<!--</div>-->
+<!--<hr>-->
+<div class="row">
+  <div class="col-xs-12">
+    <a
+      class="list-group-item clearfix"
+      *ngFor="let product of products">
+      <div class="pull-left">
+        <h4 class="list-group-item-heading">{{ product.name }}</h4>
+        <p class="list-group-item-text">{{ product.description }}</p>
+        <br>
+        <p class="list-group-item-text"> Price: ${{ product.price }}</p>
+        <p class="list-group-item-text"> Quantity Available: {{product.quantityAvailable}}</p>
+        <button type="button" class="btn btn-primary btn-sm">BUY</button>
+        <!--<button type="button" class="btn btn-warning btn-sm"> EDIT</button>-->
+      </div>
+    </a>
+    <app-product-item></app-product-item>
+  </div>
+</div>
+
