@@ -1,3 +1,10 @@
-<p>
-  shopping-list-item works!
-</p>
+<a
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ product.name }}</h4>
+    <p class="list-group-item-text">{{ product.description }}</p>
+    <br>
+    <p class="list-group-item-text"> Price: ${{ product.price }}</p>
+    <!--<button type="button" class="btn btn-warning btn-sm"> EDIT</button>-->
+  </div>
+</a>

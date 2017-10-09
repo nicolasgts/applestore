@@ -103,7 +103,8 @@ router.route('/user/:user_id')
 router.route('/user/:user_id/purchases')
  .post(function (req, res) {
 
-   appleStore.User.findById(req.params.user_id, function (err, user) {
+   appleStore.User
+   .findById(req.params.user_id, function (err, user) {
      if (err) {
        res.send(err)
        return
@@ -144,6 +145,19 @@ router.route('/user/:user_id/purchases')
          });
          
      });
+
+
+  router.route('/user/:user_id/purchases/:approved')   
+  .get( urlencodeParser, function(req, res){
+      
+            appleStore.Purchase.findOne( { user: req.params.user_id, approved: req.params.approved}, function(err, purchase){
+              if(err)
+                res.send(err)
+      
+              res.json(purchase);
+            });
+            
+        });
 
 
 

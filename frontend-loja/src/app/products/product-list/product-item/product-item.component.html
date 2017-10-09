@@ -1,3 +1,12 @@
-<p>
-  product-item works!
-</p>
+<a
+  class="list-group-item clearfix">
+  <div class="pull-left">
+    <h4 class="list-group-item-heading">{{ product.name }}</h4>
+    <p class="list-group-item-text">{{ product.description }}</p>
+    <br>
+    <p class="list-group-item-text"> Price: ${{ product.price }}</p>
+    <p class="list-group-item-text"> Quantity Available: {{product.quantityAvailable}}</p>
+    <button type="button" class="btn btn-primary btn-sm" (click)="onAddToShoppingList()">BUY</button>
+    <!--<button type="button" class="btn btn-warning btn-sm"> EDIT</button>-->
+  </div>
+</a>

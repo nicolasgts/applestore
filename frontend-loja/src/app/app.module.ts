@@ -12,6 +12,9 @@ import { ProductEditComponent } from './products/product-edit/product-edit.compo
 import {HttpModule} from '@angular/http';
 import {FormsModule} from '@angular/forms';
 import {ProductService} from './products/product.service';
+import {ShoppingListService} from './shopping-list/shopping-list.service';
+import { UserComponent } from './user/user.component';
+import {UserService} from "./user/user.service";
 
 @NgModule({
   declarations: [
@@ -22,14 +25,15 @@ import {ProductService} from './products/product.service';
     ProductItemComponent,
     ShoppingListComponent,
     ShoppingListItemComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule
   ],
-  providers: [ProductService],
+  providers: [ProductService, ShoppingListService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit, Output} from '@angular/core';
+import {ShoppingList} from './shopping-list.model';
+import {Product} from '../products/product';
+import {ShoppingListService} from './shopping-list.service';
+import {isUndefined} from "util";
 
 @Component({
   selector: 'app-shopping-list',
@@ -7,9 +11,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShoppingListComponent implements OnInit {
 
-  constructor() { }
+  shoppingList: ShoppingList;
+  products: Product[];
+
+
+
+
+  constructor(private slService: ShoppingListService) {
+      console.log('jdjdjdj');
+      this.products = new Array<Product>();
+  }
 
   ngOnInit() {
+    if (isUndefined(this.shoppingList)) {
+      this.slService.geCurrentShoppingList().subscribe(shoppingList => {
+        this.shoppingList = shoppingList;
+        this.products = this.shoppingList.products;
+        console.log(isUndefined(this.shoppingList));
+      });
+    }
   }
 
 }

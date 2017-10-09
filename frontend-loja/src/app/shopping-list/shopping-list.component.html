@@ -2,6 +2,16 @@
   <div class="col-xs-10">
     <p> Buttom to buy and price total price</p>
     <hr>
-    <p>The list</p>
+    <p>{{products.length}}</p>
+
+    <div class="col-md-6">
+
+      <app-shopping-list-item *ngFor="let productEl of products"
+                        [product] = "productEl"
+      ></app-shopping-list-item>
+    </div>
+
   </div>
 </div>
+
+

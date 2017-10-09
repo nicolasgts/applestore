@@ -19,6 +19,20 @@ var router = express.Router()
        res.json(purchases);
      });
 
+ })
+ .post(function(req,res){
+
+  var purchase = new appleStore.Purchase();
+  purchase.user = "59d3d46bf47991074cd2caaf"; //colocar user  
+  purchase.totalValue = req.body.totalValue;
+  purchase.products = req.body.products;
+
+  purchase.save(function (err) {
+    if (err)
+      res.send(err);
+
+    res.json({ message: 'Purchase created!' });
+  });
  });
 
 
@@ -72,6 +86,22 @@ var router = express.Router()
 
      res.json({ message: 'Successfully deleted' });
    });
+ });
+
+// 
+
+ router.route('/purchase/:approved')
+ .get(urlencodeParser, function (req, res) {
+
+   appleStore.Purchase.findOne(req.params.approved)
+     .populate('user')  // quando retorna o objeto na query ele pega o objeto pelo id e retorna completo , mas no modelo ele continua pegando so o id
+     .exec(function (err, purchase) {
+       if (err)
+         res.send(err)
+
+       res.json(purchase);
+     });
+
  });
 
 
